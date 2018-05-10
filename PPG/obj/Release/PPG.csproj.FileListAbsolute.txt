@@ -1,0 +1,7 @@
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\bin\Release\PPG.exe.config
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\obj\Release\PPG.csprojResolveAssemblyReference.cache
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\obj\Release\PPG.Form2.resources
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\obj\Release\PPG.Form3.resources
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\obj\Release\PPG.Form4.resources
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\obj\Release\PPG.Properties.Resources.resources
+C:\Users\mathi\Documents\Visual Studio 2015\Projects\PPG - Copy (2)\PPG\obj\Release\PPG.csproj.GenerateResource.Cache

@@ -19,6 +19,8 @@ namespace PPG
         public bool soundPlayerIsPlaying = false;
         public int timerInterval = 1;
         public bool maxLineEnabled = false;
+        public bool minRangeEnabled = false;
+        public int minRange = 100;
         public Color maxColor = Color.FromArgb(155, 0, 0);
 
         public List<Label> PPG1Labels = new List<Label>();
@@ -282,9 +284,13 @@ namespace PPG
             {
                 foreach (DataPoint dp in serie.Points)
                 {
-                    if (dp.XValue >= leftLimit && dp.XValue <= rightLimit)
+                    if (dp.XValue >= leftLimit && dp.XValue <= rightLimit && !minRangeEnabled)
                     {
                         max = Math.Max(max, dp.YValues[0]);
+                    } else if (dp.XValue >= leftLimit && dp.XValue <= rightLimit && minRangeEnabled)
+                    {
+                        max = Math.Max(max, dp.YValues[0]);
+                        max = Math.Max(max, minRange);
                     }
                 }
             }

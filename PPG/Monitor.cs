@@ -179,6 +179,10 @@ namespace PPG
             label17.Text = "Transition (%):";
             label18.Text = "Time: 00:00";
 
+            label8.Text = "Sine wave:";
+            label6.Text = "Middle:";
+            label7.Text = "Period:";
+
             PauzeKnop.Text = "Pause";
             ResetGrafiekKnop.Text = "Clear chart";
             ResetHoogstKnop.Text = "Reset maximums";
@@ -652,6 +656,32 @@ namespace PPG
         private void rangeUpDown_ValueChanged(object sender, EventArgs e)
         {
             chartManager.minRange = (int)rangeUpDown.Value;
+        }
+
+        private void rangeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroToggle1_CheckedChanged(object sender, EventArgs e)
+        {
+            chartingSpace.Series["Sine"].Enabled = metroToggle1.Checked;
+            chartManager.sineWaveEnabled = metroToggle1.Checked;
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.sineWaveBalance = (int)numericUpDown4.Value;
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.sineWavePeriod = (int)numericUpDown5.Value;
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.sineWaveAmplitude = (int)numericUpDown3.Value;
         }
     }
 }

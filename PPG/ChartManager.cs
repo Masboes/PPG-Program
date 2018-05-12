@@ -44,6 +44,12 @@ namespace PPG
         public NumericUpDown maxLineNumUpDwn;
         private int minimalDomain = 10;
 
+        public bool sineWaveEnabled = true;
+        public decimal sineWaveAmplitude = 50.0m;
+        public decimal sineWavePeriod = 20.0m;
+        public int sineWaveBalance = 100;
+        private decimal iterationCounter = 0;
+
         public void initialize_chart()
         {
             chartingSpace.Series.Remove(chartingSpace.Series["Series1"]);
@@ -96,6 +102,13 @@ namespace PPG
             chartingSpace.ChartAreas[0].AxisY.Minimum = 0;
             chartingSpace.ChartAreas[0].AxisY.Maximum = minimalDomain;
             chartingSpace.Series["Maximum"].Enabled = false;
+
+            chartingSpace.Series.Add("Sine");
+            chartingSpace.Series["Sine"].BorderWidth = 3;
+            chartingSpace.Series["Sine"].Color = Color.Black;
+            chartingSpace.Series["Sine"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            chartingSpace.Series["Sine"].Enabled = sineWaveEnabled;
+
             PPGLogger.log("Prepairing chart...");
         }
 
@@ -251,6 +264,8 @@ namespace PPG
                 chartingSpace.Series[middelvinger1].Points.AddXY(loopCounter1, plotData1[2]);
                 chartingSpace.Series[ringvinger1].Points.AddXY(loopCounter1, plotData1[3]);
 
+                chartingSpace.Series["Sine"].Points.AddXY(loopCounter1, Math.Sin((double)((2 * Math.PI * (double)(1.0m/sineWavePeriod)) * ((double)loopCounter1 - (double)iterationCounter))) * (double)sineWaveAmplitude + sineWaveBalance);
+
                 if (loopCounter1 > minimalDomain + DomainScrollBar.Value)
                 {
                     break;
@@ -258,6 +273,7 @@ namespace PPG
 
                 loopCounter1 += timerInterval / 1000m;
             }
+            iterationCounter += timerInterval / 1000m;
 
             foreach (decimal[] plotData2 in dataHandler.chartData2)
             {
@@ -287,10 +303,15 @@ namespace PPG
                     if (dp.XValue >= leftLimit && dp.XValue <= rightLimit && !minRangeEnabled)
                     {
                         max = Math.Max(max, dp.YValues[0]);
-                    } else if (dp.XValue >= leftLimit && dp.XValue <= rightLimit && minRangeEnabled)
-                    {
-                        max = Math.Max(max, dp.YValues[0]);
-                        max = Math.Max(max, minRange - 5); // -5 because we add 5 to the max
+                        if(minRangeEnabled)
+                        {
+                            max = Math.Max(max, minRange - 5);
+                        }
+
+                        if(sineWaveEnabled)
+                        {
+                            max = Math.Max(max, ((double)sineWaveBalance + (double)sineWaveAmplitude));
+                        }
                     }
                 }
             }

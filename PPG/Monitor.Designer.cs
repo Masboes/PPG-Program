@@ -119,6 +119,9 @@
             this.clockTimer = new System.Windows.Forms.Timer(this.components);
             this.PPG1 = new System.IO.Ports.SerialPort(this.components);
             this.PPG2 = new System.IO.Ports.SerialPort(this.components);
+            this.rangeLabel = new System.Windows.Forms.Label();
+            this.rangeToggle = new MetroFramework.Controls.MetroToggle();
+            this.rangeUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -132,6 +135,7 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rangeUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // chartTimer
@@ -968,9 +972,8 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.29412F));
             this.tableLayoutPanel5.Controls.Add(this.DomeinScrollBar, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label15, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label16, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.button1, 2, 1);
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(747, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -1008,10 +1011,11 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(19, 52);
+            this.label16.Location = new System.Drawing.Point(17, 13);
             this.label16.Name = "label16";
             this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-            this.label16.Size = new System.Drawing.Size(79, 44);
+            this.tableLayoutPanel7.SetRowSpan(this.label16, 2);
+            this.label16.Size = new System.Drawing.Size(101, 24);
             this.label16.TabIndex = 2;
             this.label16.Text = "Maximale lijn:";
             // 
@@ -1032,24 +1036,31 @@
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.ColumnCount = 3;
+            this.tableLayoutPanel7.ColumnCount = 4;
+            this.tableLayoutPanel5.SetColumnSpan(this.tableLayoutPanel7, 2);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel7.Controls.Add(this.button7, 2, 1);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown1, 1, 1);
-            this.tableLayoutPanel7.Controls.Add(this.checkBox1, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.numericUpDown2, 1, 2);
-            this.tableLayoutPanel7.Controls.Add(this.label17, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.rangeUpDown, 2, 3);
+            this.tableLayoutPanel7.Controls.Add(this.rangeToggle, 1, 3);
+            this.tableLayoutPanel7.Controls.Add(this.rangeLabel, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.button7, 3, 1);
+            this.tableLayoutPanel7.Controls.Add(this.numericUpDown1, 2, 1);
+            this.tableLayoutPanel7.Controls.Add(this.label16, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.checkBox1, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.numericUpDown2, 2, 2);
+            this.tableLayoutPanel7.Controls.Add(this.label17, 1, 2);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(104, 37);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 37);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 4;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowCount = 5;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(208, 75);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66667F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(309, 75);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
             // button7
@@ -1057,11 +1068,11 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(163, 12);
+            this.button7.Location = new System.Drawing.Point(263, 0);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
             this.tableLayoutPanel7.SetRowSpan(this.button7, 2);
-            this.button7.Size = new System.Drawing.Size(45, 50);
+            this.button7.Size = new System.Drawing.Size(46, 50);
             this.button7.TabIndex = 21;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -1069,7 +1080,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(84, 15);
+            this.numericUpDown1.Location = new System.Drawing.Point(205, 3);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -1081,14 +1092,14 @@
             0,
             -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(76, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown1.TabIndex = 6;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(3, 15);
+            this.checkBox1.Location = new System.Drawing.Point(124, 3);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 19);
             this.checkBox1.TabIndex = 7;
@@ -1105,14 +1116,14 @@
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(84, 40);
+            this.numericUpDown2.Location = new System.Drawing.Point(205, 28);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             400,
             0,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(76, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown2.TabIndex = 22;
             this.numericUpDown2.Value = new decimal(new int[] {
             50,
@@ -1124,7 +1135,7 @@
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 43);
+            this.label17.Location = new System.Drawing.Point(124, 31);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(74, 13);
             this.label17.TabIndex = 23;
@@ -1288,6 +1299,47 @@
             // 
             this.PPG2.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.PPGTwo_DataReceived);
             // 
+            // rangeLabel
+            // 
+            this.rangeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.rangeLabel.AutoSize = true;
+            this.rangeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rangeLabel.Location = new System.Drawing.Point(60, 50);
+            this.rangeLabel.Name = "rangeLabel";
+            this.rangeLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.rangeLabel.Size = new System.Drawing.Size(58, 24);
+            this.rangeLabel.TabIndex = 24;
+            this.rangeLabel.Text = "Bereik:";
+            // 
+            // rangeToggle
+            // 
+            this.rangeToggle.AutoSize = true;
+            this.rangeToggle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rangeToggle.Location = new System.Drawing.Point(124, 53);
+            this.rangeToggle.Name = "rangeToggle";
+            this.rangeToggle.Size = new System.Drawing.Size(75, 19);
+            this.rangeToggle.TabIndex = 25;
+            this.rangeToggle.Text = "Off";
+            this.rangeToggle.UseSelectable = true;
+            // 
+            // rangeUpDown
+            // 
+            this.rangeUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rangeUpDown.Location = new System.Drawing.Point(205, 53);
+            this.rangeUpDown.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.rangeUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.rangeUpDown.Name = "rangeUpDown";
+            this.rangeUpDown.Size = new System.Drawing.Size(55, 20);
+            this.rangeUpDown.TabIndex = 26;
+            // 
             // Monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1323,6 +1375,7 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rangeUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1412,5 +1465,8 @@
         private System.Windows.Forms.Label PPG1BatteryLvl;
         private System.IO.Ports.SerialPort PPG1;
         private System.IO.Ports.SerialPort PPG2;
+        private System.Windows.Forms.NumericUpDown rangeUpDown;
+        private MetroFramework.Controls.MetroToggle rangeToggle;
+        private System.Windows.Forms.Label rangeLabel;
     }
 }

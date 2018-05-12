@@ -184,6 +184,8 @@ namespace PPG
             ResetHoogstKnop.Text = "Reset maximums";
             IjkpuntKnop.Text = "Highlight";
 
+            rangeLabel.Text = "Range:";
+
             chartManager.english();
             PPGLogger.log("English: " + english);
         }
@@ -234,6 +236,7 @@ namespace PPG
                 PPG1BatteryLvl.Font = new Font(Ring1Hoogst.Font.FontFamily.Name, 12 * this.Size.Height / 768);
                 PPG2BatteryLvl.Font = new Font(Ring1Hoogst.Font.FontFamily.Name, 12 * this.Size.Height / 768);
                 batteryLbl.Font = new Font(Ring1Hoogst.Font.FontFamily.Name, 12 * this.Size.Height / 768);
+                rangeLabel.Font = new Font(Ring1Hoogst.Font.FontFamily.Name, 12 * this.Size.Height / 768);
                 chartingSpace.Legends["Legend1"].Font = new Font(chartingSpace.Legends["Legend1"].Font.FontFamily, 12 * this.Size.Height / 768);
                 chartingSpace.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 12 * this.Size.Height / 768;
                 chartingSpace.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 12 * this.Size.Height / 768;

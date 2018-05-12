@@ -70,3 +70,4 @@ C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\obj\Debug\P
 C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\obj\Debug\PPG.CalibrationForm.resources
 C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\bin\Debug\MathNet.Numerics.dll
 C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\bin\Debug\MathNet.Numerics.xml
+C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\obj\Debug\PPG.csproj.CopyComplete

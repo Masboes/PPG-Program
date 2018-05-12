@@ -643,5 +643,15 @@ namespace PPG
             data = data.Replace("#", "&PPG2");
             DataHandler.NewDataPPGReciever(data);
         }
+
+        private void rangeToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            chartManager.minRangeEnabled = rangeToggle.Checked;
+        }
+
+        private void rangeUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.minRange = (int)rangeUpDown.Value;
+        }
     }
 }

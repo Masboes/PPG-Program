@@ -1321,24 +1321,31 @@
             this.rangeToggle.TabIndex = 25;
             this.rangeToggle.Text = "Off";
             this.rangeToggle.UseSelectable = true;
+            this.rangeToggle.CheckedChanged += new System.EventHandler(this.rangeToggle_CheckedChanged);
             // 
             // rangeUpDown
             // 
             this.rangeUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rangeUpDown.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.rangeUpDown.Location = new System.Drawing.Point(205, 53);
             this.rangeUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.rangeUpDown.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
             this.rangeUpDown.Name = "rangeUpDown";
             this.rangeUpDown.Size = new System.Drawing.Size(55, 20);
             this.rangeUpDown.TabIndex = 26;
+            this.rangeUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.rangeUpDown.ValueChanged += new System.EventHandler(this.rangeUpDown_ValueChanged);
             // 
             // Monitor
             // 

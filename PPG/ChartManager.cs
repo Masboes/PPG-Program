@@ -290,7 +290,7 @@ namespace PPG
                     } else if (dp.XValue >= leftLimit && dp.XValue <= rightLimit && minRangeEnabled)
                     {
                         max = Math.Max(max, dp.YValues[0]);
-                        max = Math.Max(max, minRange);
+                        max = Math.Max(max, minRange - 5); // -5 because we add 5 to the max
                     }
                 }
             }

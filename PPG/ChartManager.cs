@@ -303,7 +303,7 @@ namespace PPG
             {
                 foreach (DataPoint dp in serie.Points)
                 {
-                    if (dp.XValue >= leftLimit && dp.XValue <= rightLimit && !minRangeEnabled)
+                    if (dp.XValue >= leftLimit && dp.XValue <= rightLimit)
                     {
                         max = Math.Max(max, dp.YValues[0]);
                         if(minRangeEnabled)

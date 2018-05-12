@@ -179,6 +179,10 @@ namespace PPG
             label17.Text = "Transition (%):";
             label18.Text = "Time: 00:00";
 
+            label8.Text = "Sine wave:";
+            label6.Text = "Middle:";
+            label7.Text = "Period:";
+
             PauzeKnop.Text = "Pause";
             ResetGrafiekKnop.Text = "Clear chart";
             ResetHoogstKnop.Text = "Reset maximums";

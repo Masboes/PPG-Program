@@ -44,7 +44,7 @@ namespace PPG
         public NumericUpDown maxLineNumUpDwn;
         private int minimalDomain = 10;
 
-        public bool sineWaveEnabled = true;
+        public bool sineWaveEnabled = false;
         public decimal sineWaveAmplitude = 50.0m;
         public decimal sineWavePeriod = 20.0m;
         public int sineWaveBalance = 100;
@@ -264,7 +264,10 @@ namespace PPG
                 chartingSpace.Series[middelvinger1].Points.AddXY(loopCounter1, plotData1[2]);
                 chartingSpace.Series[ringvinger1].Points.AddXY(loopCounter1, plotData1[3]);
 
-                chartingSpace.Series["Sine"].Points.AddXY(loopCounter1, Math.Sin((double)((2 * Math.PI * (double)(1.0m/sineWavePeriod)) * ((double)loopCounter1 - (double)iterationCounter))) * (double)sineWaveAmplitude + sineWaveBalance);
+                if(sineWaveEnabled)
+                {
+                    chartingSpace.Series["Sine"].Points.AddXY(loopCounter1, Math.Sin((double)((2 * Math.PI * (double)(1.0m / sineWavePeriod)) * ((double)loopCounter1 - (double)iterationCounter))) * (double)sineWaveAmplitude + sineWaveBalance);
+                }
 
                 if (loopCounter1 > minimalDomain + DomainScrollBar.Value)
                 {

@@ -653,5 +653,31 @@ namespace PPG
         {
             chartManager.minRange = (int)rangeUpDown.Value;
         }
+
+        private void rangeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroToggle1_CheckedChanged(object sender, EventArgs e)
+        {
+            chartingSpace.Series["Sine"].Enabled = metroToggle1.Checked;
+            chartManager.sineWaveEnabled = metroToggle1.Checked;
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.sineWaveBalance = (int)numericUpDown4.Value;
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.sineWavePeriod = (int)numericUpDown5.Value;
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            chartManager.sineWaveAmplitude = (int)numericUpDown3.Value;
+        }
     }
 }

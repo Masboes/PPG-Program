@@ -265,7 +265,7 @@ namespace PPG
                             chart1.Series[i.ToString()].BorderWidth = 4;
                             chart1.Series[i.ToString()].IsVisibleInLegend = false;
                             chart1.Series[i.ToString()].Points.AddXY(xloc, -100);
-                            chart1.Series[i.ToString()].Points.AddXY(xloc, 100000);
+                            chart1.Series[i.ToString()].Points.AddXY(xloc, 50000);
                         } catch
                         {
                             continue;

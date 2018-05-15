@@ -16,8 +16,8 @@ namespace PPG
 {
     public partial class MainMenu : MetroForm
     {
-        public string version = "7.7";
-        public string dateOfRelease = "12-05-2018";
+        public string version = "7.8";
+        public string dateOfRelease = "15-05-2018";
 
         public bool connected1 = false;
         public bool connected2 = false;

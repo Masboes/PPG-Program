@@ -262,9 +262,9 @@ namespace PPG
                             label6.Text = ringvinger + ": " + HoogstRing.ToString();
                             i += 0.1m;
                         }
-                    } else if (!line.StartsWith("Ijk") && allLines[0].StartsWith("Time")) {
+                    } else if (!line.StartsWith("Ijk") && allLines[0].StartsWith("sep")) {
                         string[] splitted = line.Split(',');
-                        if (line != "" && splitted.Length == 10)
+                        if (line != "" && splitted.Length == 10 && !line.StartsWith("sep") && !line.StartsWith("Time"))
                         {
                             chart1.Series[duim].Points.AddXY(i, Decimal.Parse(splitted[1], new CultureInfo("en-US")));
                             chart1.Series[wijsvinger].Points.AddXY(i, Decimal.Parse(splitted[2], new CultureInfo("en-US")));
@@ -368,7 +368,7 @@ namespace PPG
                 double rightLimit = chart1.ChartAreas[0].AxisX.Maximum;
                 foreach (var serie in chart1.Series)
                 {
-                    if(serie == chart1.Series[duim] || serie == chart1.Series[middelvinger] || serie == chart1.Series[ringvinger] || serie == chart1.Series[wijsvinger] || serie == chart1.Series["Series2"] || serie == chart1.Series[duim2] || serie == chart1.Series[wijsvinger2] || serie == chart1.Series[middelvinger2] || serie == chart1.Series[ringvinger2])
+                    if(serie == chart1.Series["Sine"] || serie == chart1.Series[duim] || serie == chart1.Series[middelvinger] || serie == chart1.Series[ringvinger] || serie == chart1.Series[wijsvinger] || serie == chart1.Series["Series2"] || serie == chart1.Series[duim2] || serie == chart1.Series[wijsvinger2] || serie == chart1.Series[middelvinger2] || serie == chart1.Series[ringvinger2])
                     {
                         foreach (var dp in serie.Points.Skip((int)(leftLimit * 10 - 1)).Take((int)(rightLimit - leftLimit)*10))
                         {

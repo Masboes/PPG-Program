@@ -49,6 +49,7 @@ namespace PPG
         public decimal sineWavePeriod = 20.0m;
         public int sineWaveBalance = 100;
         private decimal iterationCounter = 0;
+        public double sineWaveValue = 0.0;
 
         public void initialize_chart()
         {
@@ -255,6 +256,15 @@ namespace PPG
             foreach (var series in chartingSpace.Series)
             {
                 series.Points.Clear();
+            }
+
+            if (sineWaveEnabled)
+            {
+                sineWaveValue = Math.Sin((double)((2 * Math.PI * (double)(1.0m / sineWavePeriod)) * ((double)loopCounter1 - (double)iterationCounter))) * (double)sineWaveAmplitude + sineWaveBalance;
+            }
+            else
+            {
+                sineWaveValue = 0.0;
             }
 
             foreach (decimal[] plotData1 in dataHandler.chartData1)

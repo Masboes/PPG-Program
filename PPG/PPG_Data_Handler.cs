@@ -48,6 +48,8 @@ namespace PPG
 
         public Monitor instance;
 
+        private int lineCounter = 0;
+
         public PPG_Data_Handler(Monitor monitor, bool calibration)
         {
             instance = monitor;
@@ -267,16 +269,19 @@ namespace PPG
             return value;
         }
         
-        public void saveLine(StreamWriter file)
+        public void saveLine(StreamWriter file, double waveValue)
         {
-            file.WriteLine(String.Format("{0} {1} {2} {3} {4} {5} {6} {7}", Thumb1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
+            file.WriteLine(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", (lineCounter / 20.0m).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
+                                                                   , Thumb1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Index1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Middle1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Ring1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Thumb2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Index2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Middle2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
-                                                                   , Ring2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)));
+                                                                   , Ring2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
+                                                                   , waveValue.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)));
+            lineCounter++;
         }
     }
 }

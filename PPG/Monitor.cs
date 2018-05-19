@@ -306,7 +306,7 @@ namespace PPG
         {
             try
             {
-                DataHandler.saveLine(file);
+                DataHandler.saveLine(file, chartManager.sineWaveValue);
             }
             catch
             {
@@ -487,7 +487,7 @@ namespace PPG
             PPGLogger.log("Selected person: " + personsBox.SelectedValue.ToString());
             chartingSpace.ChartAreas[0].BackColor = Color.White;
             string currentTime = DateTime.Now.ToString().Replace('/', '-').Replace(':', '꞉');
-            string filePath = "Profiles\\" + personsBox.SelectedValue.ToString() + "\\" + currentTime + ".txt";
+            string filePath = "Profiles\\" + personsBox.SelectedValue.ToString() + "\\" + currentTime + ".csv";
 
             PPGLogger.log("Person filepath: " + filePath);
             if (File.Exists(filePath)) MessageBox.Show("File error", "File already exists, please wait a couple of seconds and try again.");           
@@ -497,6 +497,7 @@ namespace PPG
             catch { }
 
             file = File.AppendText(filePath);
+            file.WriteLine("sep=,\nTime since start(s),Thumb 1,Index 1,Middle 1,Ring 1,Thumb 2,Index 2,Middle 2,Ring 2,Sine Wave");
             running = true;
             chartTimer.Enabled = true;
             clockTimer.Enabled = true;

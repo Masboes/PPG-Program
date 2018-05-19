@@ -71,3 +71,20 @@ C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\obj\Debug\P
 C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\bin\Debug\MathNet.Numerics.dll
 C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\bin\Debug\MathNet.Numerics.xml
 C:\Users\MathijsBoezer\Documents\Visual Studio 2017\PPG revision\PPG\obj\Debug\PPG.csproj.CopyComplete
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\PPG.exe.config
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.exe
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.pdb
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\PPG.exe
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\PPG.pdb
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\MathNet.Numerics.dll
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\MetroFramework.Design.dll
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\bin\Debug\MathNet.Numerics.xml
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.csprojResolveAssemblyReference.cache
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.CalibrationForm.resources
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.Monitor.resources
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.Viewer.resources
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.MainMenu.resources
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.Opening.resources
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.Properties.Resources.resources
+C:\Users\mathi\Documents\GitHub\PPG-Program\PPG\obj\Debug\PPG.csproj.GenerateResource.Cache

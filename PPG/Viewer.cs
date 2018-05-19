@@ -107,14 +107,6 @@ namespace PPG
             chart1.ChartAreas[0].AxisX.Maximum = 30;
             chart1.ChartAreas[0].AxisY.Minimum = 0;
             chart1.ChartAreas[0].AxisY.Maximum = 50;
-            chart1.Series[duim].ToolTip = "Kracht:#VALY";
-            chart1.Series[wijsvinger].ToolTip = "Kracht:#VALY";
-            chart1.Series[middelvinger].ToolTip = "Kracht:#VALY";
-            chart1.Series[ringvinger].ToolTip = "Kracht:#VALY";
-            chart1.Series[duim2].ToolTip = "Kracht:#VALY";
-            chart1.Series[wijsvinger2].ToolTip = "Kracht:#VALY";
-            chart1.Series[middelvinger2].ToolTip = "Kracht:#VALY";
-            chart1.Series[ringvinger2].ToolTip = "Kracht:#VALY";
             chart1.Series[duim].Color = Color.Blue;
             chart1.Series[wijsvinger].Color = Color.Red;
             chart1.Series[middelvinger].Color = Color.Black;
@@ -123,6 +115,12 @@ namespace PPG
             chart1.Series[wijsvinger2].Color = Color.Gray;
             chart1.Series[middelvinger2].Color = Color.Pink;
             chart1.Series[ringvinger2].Color = Color.Purple;
+
+            chart1.Series.Add("Sine");
+            chart1.Series["Sine"].BorderWidth = 3;
+            chart1.Series["Sine"].Color = Color.Black;
+            chart1.Series["Sine"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            chart1.Series["Sine"].Enabled = true;
         }
 
         private void update_treeView()
@@ -141,7 +139,8 @@ namespace PPG
                 List<string> itemsFormatted = new List<string>();
                 foreach(var item in items)
                 {
-                    itemsFormatted.Add(item.Substring(9 + formattedFolder.Length + 2, item.Length - (9 + formattedFolder.Length + 6)).Replace('-', '/').Replace('꞉', ':'));
+                    itemsFormatted.Add(item.Substring(9 + formattedFolder.Length + 2, item.Length - (9 + formattedFolder.Length + 6)).Replace('-', '/'));
+
                 }
 
                 foreach(string item in sortByDateTime(itemsFormatted.ToArray()))
@@ -153,7 +152,7 @@ namespace PPG
 
         private string[] sortByDateTime(string[] items)
         {
-            var dates = Array.ConvertAll(items, x => DateTime.Parse(x));
+            var dates = Array.ConvertAll(items, x => DateTime.Parse(x.Replace('꞉', ':')));
             var dateTimes = dates.OrderByDescending(x => x).ToArray();
             List<string> sortedStrings = new List<string>();
             foreach(var dateTime in dateTimes)
@@ -179,9 +178,17 @@ namespace PPG
                 try
                 {
                     allLines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + path.Replace('/', '-').Replace(':', '꞉'));
-                } catch 
+                } catch
                 {
-                    MessageBox.Show("File already opened, please close the file before trying to open it.", "File open error");
+                    try
+                    {
+                        Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + String.Format(@"Profiles\{0}\{1}.csv", e.Node.Parent.Text, e.Node.Text).Replace('/', '-').Replace(':', '꞉'));
+                        allLines = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + String.Format(@"Profiles\{0}\{1}.csv", e.Node.Parent.Text, e.Node.Text).Replace('/', '-').Replace(':', '꞉'));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("File already opened, please close the file before trying to open it.", "File open error");
+                    }
                 }
 
                 HoogstDuim = 0;
@@ -197,7 +204,7 @@ namespace PPG
                 decimal i = 0;
                 foreach (string line in allLines)
                 {
-                    if(!line.StartsWith("Ijk"))
+                    if (!line.StartsWith("Ijk") && !allLines[0].StartsWith("sep"))
                     {
                         string[] splitted = line.Split();
                         if (line != "" && splitted.Length == 8)
@@ -247,7 +254,40 @@ namespace PPG
                             label6.Text = ringvinger + ": " + HoogstRing.ToString();
                             i += 0.1m;
                         }
-                    } else
+                    } else if (!line.StartsWith("Ijk") && allLines[0].StartsWith("sep")) {
+                        string[] splitted = line.Split(',');
+                        if (line != "" && splitted.Length == 10 && !line.StartsWith("sep") && !line.StartsWith("Time"))
+                        {
+                            chart1.Series[duim].Points.AddXY(i, Decimal.Parse(splitted[1], new CultureInfo("en-US")));
+                            chart1.Series[wijsvinger].Points.AddXY(i, Decimal.Parse(splitted[2], new CultureInfo("en-US")));
+                            chart1.Series[middelvinger].Points.AddXY(i, Decimal.Parse(splitted[3], new CultureInfo("en-US")));
+                            chart1.Series[ringvinger].Points.AddXY(i, Decimal.Parse(splitted[4], new CultureInfo("en-US")));
+                            chart1.Series[duim2].Points.AddXY(i, Decimal.Parse(splitted[5], new CultureInfo("en-US")));
+                            chart1.Series[wijsvinger2].Points.AddXY(i, Decimal.Parse(splitted[6], new CultureInfo("en-US")));
+                            chart1.Series[middelvinger2].Points.AddXY(i, Decimal.Parse(splitted[7], new CultureInfo("en-US")));
+                            chart1.Series[ringvinger2].Points.AddXY(i, Decimal.Parse(splitted[8], new CultureInfo("en-US")));
+                            chart1.Series["Sine"].Points.AddXY(i, Decimal.Parse(splitted[9], new CultureInfo("en-US")));
+
+                            HoogstDuim = Math.Max(HoogstDuim, Decimal.Parse(splitted[1], new CultureInfo("en-US")));
+                            HoogstWijs = Math.Max(HoogstWijs, Decimal.Parse(splitted[2], new CultureInfo("en-US")));
+                            HoogstMiddel = Math.Max(HoogstMiddel, Decimal.Parse(splitted[3], new CultureInfo("en-US")));
+                            HoogstRing = Math.Max(HoogstRing, Decimal.Parse(splitted[4], new CultureInfo("en-US")));
+                            HoogstDuim2 = Math.Max(HoogstDuim2, Decimal.Parse(splitted[5], new CultureInfo("en-US")));
+                            HoogstWijs2 = Math.Max(HoogstWijs2, Decimal.Parse(splitted[6], new CultureInfo("en-US")));
+                            HoogstMiddel2 = Math.Max(HoogstMiddel2, Decimal.Parse(splitted[7], new CultureInfo("en-US")));
+                            HoogstRing2 = Math.Max(HoogstRing2, Decimal.Parse(splitted[8], new CultureInfo("en-US")));
+
+                            label3.Text = duim + ": " + HoogstDuim.ToString();
+                            label4.Text = wijsvinger + ": " + HoogstWijs.ToString();
+                            label5.Text = middelvinger + ": " + HoogstMiddel.ToString();
+                            label6.Text = ringvinger + ": " + HoogstRing.ToString();
+                            label8.Text = duim2 + ": " + HoogstDuim2.ToString();
+                            label9.Text = wijsvinger2 + ": " + HoogstWijs2.ToString();
+                            label10.Text = middelvinger2 + ": " + HoogstMiddel2.ToString();
+                            label11.Text = ringvinger2 + ": " + HoogstRing2.ToString();
+                            i += 0.1m;
+                        }
+                    } else 
                     {                       
                         try
                         {
@@ -320,7 +360,7 @@ namespace PPG
                 double rightLimit = chart1.ChartAreas[0].AxisX.Maximum;
                 foreach (var serie in chart1.Series)
                 {
-                    if(serie == chart1.Series[duim] || serie == chart1.Series[middelvinger] || serie == chart1.Series[ringvinger] || serie == chart1.Series[wijsvinger] || serie == chart1.Series["Series2"] || serie == chart1.Series[duim2] || serie == chart1.Series[wijsvinger2] || serie == chart1.Series[middelvinger2] || serie == chart1.Series[ringvinger2])
+                    if(serie == chart1.Series["Sine"] || serie == chart1.Series[duim] || serie == chart1.Series[middelvinger] || serie == chart1.Series[ringvinger] || serie == chart1.Series[wijsvinger] || serie == chart1.Series["Series2"] || serie == chart1.Series[duim2] || serie == chart1.Series[wijsvinger2] || serie == chart1.Series[middelvinger2] || serie == chart1.Series[ringvinger2])
                     {
                         foreach (var dp in serie.Points.Skip((int)(leftLimit * 10 - 1)).Take((int)(rightLimit - leftLimit)*10))
                         {

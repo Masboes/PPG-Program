@@ -107,14 +107,6 @@ namespace PPG
             chart1.ChartAreas[0].AxisX.Maximum = 30;
             chart1.ChartAreas[0].AxisY.Minimum = 0;
             chart1.ChartAreas[0].AxisY.Maximum = 50;
-            chart1.Series[duim].ToolTip = "Kracht:#VALY";
-            chart1.Series[wijsvinger].ToolTip = "Kracht:#VALY";
-            chart1.Series[middelvinger].ToolTip = "Kracht:#VALY";
-            chart1.Series[ringvinger].ToolTip = "Kracht:#VALY";
-            chart1.Series[duim2].ToolTip = "Kracht:#VALY";
-            chart1.Series[wijsvinger2].ToolTip = "Kracht:#VALY";
-            chart1.Series[middelvinger2].ToolTip = "Kracht:#VALY";
-            chart1.Series[ringvinger2].ToolTip = "Kracht:#VALY";
             chart1.Series[duim].Color = Color.Blue;
             chart1.Series[wijsvinger].Color = Color.Red;
             chart1.Series[middelvinger].Color = Color.Black;

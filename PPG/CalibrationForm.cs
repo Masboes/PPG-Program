@@ -205,7 +205,7 @@ namespace PPG
         { 
             mesurements = new List<decimal>();
             selectedFingerIndex = 0;
-            if (radioButton2.Checked) selectedFingerIndex += 4;
+            if (radioButton1.Checked) selectedFingerIndex += 4;
 
             if (radioButton3.Checked) selectedFingerIndex += 0;
             if (radioButton4.Checked) selectedFingerIndex += 1;

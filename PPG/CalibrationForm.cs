@@ -23,6 +23,7 @@ namespace PPG
 
         private int measurementCounter = 0;
         private Double[] measureValues = { 50.0, 50.0, 50.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0, 400.0, 500.0, 600.0, 700.0 , 800.0, 900.0, 1000.0, 1300.0, 1500.0 };
+        //private Double[] measureValues = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 };
 
         private bool englishMode = false;
 
@@ -141,8 +142,8 @@ namespace PPG
 
         private void processData()
         {
-            var x = mesurements.Select(item => Convert.ToDouble(item)).ToArray();
-            var y = measureValues;
+            var y = mesurements.Select(item => Convert.ToDouble(item)).ToArray();
+            var x = measureValues;
 
             var constants = Fit.Polynomial(x, y, 2);
 

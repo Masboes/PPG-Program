@@ -59,6 +59,8 @@ namespace PPG
                 label3.Text = "until the value below does not change significantly";
                 label4.Text = "Place 0 grammes of pressure on the selected finger";
             }
+
+            setPoints();
         }
 
         private void getCalibrationData()
@@ -137,6 +139,44 @@ namespace PPG
                 showWeightValue(measureValues[measurementCounter]);
                 showStatus(measurementCounter + 1, measureValues.Length);
             }
+
+            setPoints();
+        }
+
+        private void setPoints()
+        {
+            chart1.Series[0].Points.Clear();
+
+            for(int i = 0; i < measureValues.Length; i++)
+            {
+                if(mesurements.Count > i)
+                {
+                    chart1.Series[0].Points.AddXY(measureValues[i], mesurements[i]);
+                } else
+                {
+                    chart1.Series[0].Points.AddXY(measureValues[i], 0);
+                }
+            }
+        }
+
+        private void displayPolynomial(double[] parameters)
+        {
+            chart1.Series[1].Points.Clear();
+
+            double counter = 0;
+            double prevVal = 0;
+
+            while(prevVal < 3000 && counter < 1000)
+            {
+                counter += 0.05;
+                prevVal = Math.Round(resolvePolynomial(parameters, counter));
+                chart1.Series[1].Points.AddXY(prevVal, counter);
+            }
+        }
+
+        private double resolvePolynomial(double[] parameters, double input)
+        {
+            return parameters[0] * Math.Pow(input, 2) + parameters[1] * input;
         }
 
         private void processData()
@@ -150,6 +190,8 @@ namespace PPG
             {
                 Console.WriteLine(i);
             }
+
+            displayPolynomial(constants);
 
             try
             {
@@ -171,6 +213,8 @@ namespace PPG
             {
                 MessageBox.Show("Kalibratie is niet gelukt :(\n Misschien is er iets mis gegaan met de verbinding, u kunt proberen dit te resetten.", "Mislukt", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            mesurements.Clear();
         }
 
         private void showStatus(int x, int outOf)
@@ -222,6 +266,8 @@ namespace PPG
 
             groupBox1.Enabled = false;
             groupBox2.Enabled = false;
+
+            chart1.Enabled = true;
         }
 
         private void PPG1_DataReceived(object sender, SerialDataReceivedEventArgs e)

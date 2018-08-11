@@ -128,10 +128,19 @@ namespace PPG
                 timer1.Enabled = false;
                 button2.Enabled = false;
                 button4.Enabled = false;
-                button1.Enabled = true;
                 button3.Enabled = true;
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
+                chart1.Enabled = false;
+
+                if (englishMode)
+                {
+                    button1.Text = "Start calibration";
+                }
+                else
+                {
+                    button1.Text = "Start kalibratie";
+                }
 
                 measurementCounter = 0;
             } else
@@ -247,27 +256,65 @@ namespace PPG
 
         private void button1_Click(object sender, EventArgs e)
         { 
-            mesurements = new List<decimal>();
-            selectedFingerIndex = 0;
-            if (radioButton1.Checked) selectedFingerIndex += 4;
+            if(button1.Text == "Start calibration" || button1.Text == "Start kalibratie")
+            {
+                mesurements = new List<decimal>();
+                selectedFingerIndex = 0;
+                if (radioButton1.Checked) selectedFingerIndex += 4;
 
-            if (radioButton3.Checked) selectedFingerIndex += 0;
-            if (radioButton4.Checked) selectedFingerIndex += 1;
-            if (radioButton5.Checked) selectedFingerIndex += 2;
-            if (radioButton6.Checked) selectedFingerIndex += 3;
+                if (radioButton3.Checked) selectedFingerIndex += 0;
+                if (radioButton4.Checked) selectedFingerIndex += 1;
+                if (radioButton5.Checked) selectedFingerIndex += 2;
+                if (radioButton6.Checked) selectedFingerIndex += 3;
 
-            timer1.Enabled = true;
-            button1.Enabled = false;
-            button3.Enabled = false;
-            button2.Enabled = true;
-            button4.Enabled = true;
-            showWeightValue(measureValues[measurementCounter]);
-            showStatus(measurementCounter + 1, measureValues.Length);
+                timer1.Enabled = true;
+                button3.Enabled = false;
+                button2.Enabled = true;
+                button4.Enabled = true;
+                showWeightValue(measureValues[measurementCounter]);
+                showStatus(measurementCounter + 1, measureValues.Length);
 
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = false;
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
 
-            chart1.Enabled = true;
+                chart1.Enabled = true;
+
+                button2.Focus();
+
+                if(englishMode)
+                {
+                    button1.Text = "Stop calibration";
+                } else
+                {
+                    button1.Text = "Stop kalibratie";
+                }
+            } else
+            {
+                mesurements = new List<decimal>();
+
+                timer1.Enabled = false;
+                button3.Enabled = true;
+                button2.Enabled = false;
+                button4.Enabled = false;
+
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = true;
+
+                chart1.Enabled = false;
+
+                measurementCounter = 0;
+
+                setPoints();
+
+                if (englishMode)
+                {
+                    button1.Text = "Start calibration";
+                }
+                else
+                {
+                    button1.Text = "Start kalibratie";
+                }
+            }
         }
 
         private void PPG1_DataReceived(object sender, SerialDataReceivedEventArgs e)

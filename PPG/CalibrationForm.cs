@@ -59,6 +59,8 @@ namespace PPG
                 label3.Text = "until the value below does not change significantly";
                 label4.Text = "Place 0 grammes of pressure on the selected finger";
             }
+
+            setPoints();
         }
 
         private void getCalibrationData()
@@ -126,10 +128,19 @@ namespace PPG
                 timer1.Enabled = false;
                 button2.Enabled = false;
                 button4.Enabled = false;
-                button1.Enabled = true;
                 button3.Enabled = true;
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
+                chart1.Enabled = false;
+
+                if (englishMode)
+                {
+                    button1.Text = "Start calibration";
+                }
+                else
+                {
+                    button1.Text = "Start kalibratie";
+                }
 
                 measurementCounter = 0;
             } else
@@ -137,6 +148,44 @@ namespace PPG
                 showWeightValue(measureValues[measurementCounter]);
                 showStatus(measurementCounter + 1, measureValues.Length);
             }
+
+            setPoints();
+        }
+
+        private void setPoints()
+        {
+            chart1.Series[0].Points.Clear();
+
+            for(int i = 0; i < measureValues.Length; i++)
+            {
+                if(mesurements.Count > i)
+                {
+                    chart1.Series[0].Points.AddXY(measureValues[i], mesurements[i]);
+                } else
+                {
+                    chart1.Series[0].Points.AddXY(measureValues[i], 0);
+                }
+            }
+        }
+
+        private void displayPolynomial(double[] parameters)
+        {
+            chart1.Series[1].Points.Clear();
+
+            double counter = 0;
+            double prevVal = 0;
+
+            while(prevVal < 3000 && counter < 1000)
+            {
+                counter += 0.05;
+                prevVal = Math.Round(resolvePolynomial(parameters, counter));
+                chart1.Series[1].Points.AddXY(prevVal, counter);
+            }
+        }
+
+        private double resolvePolynomial(double[] parameters, double input)
+        {
+            return parameters[0] * Math.Pow(input, 2) + parameters[1] * input;
         }
 
         private void processData()
@@ -150,6 +199,8 @@ namespace PPG
             {
                 Console.WriteLine(i);
             }
+
+            displayPolynomial(constants);
 
             try
             {
@@ -171,6 +222,8 @@ namespace PPG
             {
                 MessageBox.Show("Kalibratie is niet gelukt :(\n Misschien is er iets mis gegaan met de verbinding, u kunt proberen dit te resetten.", "Mislukt", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            mesurements.Clear();
         }
 
         private void showStatus(int x, int outOf)
@@ -203,25 +256,65 @@ namespace PPG
 
         private void button1_Click(object sender, EventArgs e)
         { 
-            mesurements = new List<decimal>();
-            selectedFingerIndex = 0;
-            if (radioButton1.Checked) selectedFingerIndex += 4;
+            if(button1.Text == "Start calibration" || button1.Text == "Start kalibratie")
+            {
+                mesurements = new List<decimal>();
+                selectedFingerIndex = 0;
+                if (radioButton1.Checked) selectedFingerIndex += 4;
 
-            if (radioButton3.Checked) selectedFingerIndex += 0;
-            if (radioButton4.Checked) selectedFingerIndex += 1;
-            if (radioButton5.Checked) selectedFingerIndex += 2;
-            if (radioButton6.Checked) selectedFingerIndex += 3;
+                if (radioButton3.Checked) selectedFingerIndex += 0;
+                if (radioButton4.Checked) selectedFingerIndex += 1;
+                if (radioButton5.Checked) selectedFingerIndex += 2;
+                if (radioButton6.Checked) selectedFingerIndex += 3;
 
-            timer1.Enabled = true;
-            button1.Enabled = false;
-            button3.Enabled = false;
-            button2.Enabled = true;
-            button4.Enabled = true;
-            showWeightValue(measureValues[measurementCounter]);
-            showStatus(measurementCounter + 1, measureValues.Length);
+                timer1.Enabled = true;
+                button3.Enabled = false;
+                button2.Enabled = true;
+                button4.Enabled = true;
+                showWeightValue(measureValues[measurementCounter]);
+                showStatus(measurementCounter + 1, measureValues.Length);
 
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = false;
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+
+                chart1.Enabled = true;
+
+                button2.Focus();
+
+                if(englishMode)
+                {
+                    button1.Text = "Stop calibration";
+                } else
+                {
+                    button1.Text = "Stop kalibratie";
+                }
+            } else
+            {
+                mesurements = new List<decimal>();
+
+                timer1.Enabled = false;
+                button3.Enabled = true;
+                button2.Enabled = false;
+                button4.Enabled = false;
+
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = true;
+
+                chart1.Enabled = false;
+
+                measurementCounter = 0;
+
+                setPoints();
+
+                if (englishMode)
+                {
+                    button1.Text = "Start calibration";
+                }
+                else
+                {
+                    button1.Text = "Start kalibratie";
+                }
+            }
         }
 
         private void PPG1_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -304,7 +397,8 @@ namespace PPG
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if(mesurements.Count > 0) {
+            button2.Focus();
+            if (mesurements.Count > 0) {
                 mesurements.RemoveAt(mesurements.Count - 1);
 
                 measurementCounter--;

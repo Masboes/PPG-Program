@@ -57,9 +57,9 @@ namespace PPG
                     Console.WriteLine(data);
                     Console.WriteLine("Analysing data...");
                     richTextBox1.AppendText("Analysing data...\n");
-                    Console.WriteLine("&: " + data.Contains('&'));
-                    richTextBox1.AppendText("Contains identifier: " + data.Contains('&') + "\n");
-                    if (data.Contains('&'))
+                    Console.WriteLine("#: " + data.Contains('#'));
+                    richTextBox1.AppendText("Contains identifier: " + data.Contains('#') + "\n");
+                    if (data.Contains('#'))
                     {
                         Console.WriteLine("PPG: " + port);
                         richTextBox1.AppendText("PPG found.\n");

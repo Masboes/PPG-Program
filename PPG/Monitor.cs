@@ -52,7 +52,7 @@ namespace PPG
         public Monitor(string comName, string comName2, bool english, bool showingLog, bool calibrationEnabled, decimal timerDelay, bool timerToggle, int timerTime)
         {
             InitializeComponent();
-            this.DataHandler = new PPG_Data_Handler(this, calibrationEnabled);
+            this.DataHandler = new PPG_Data_Handler(this, calibrationEnabled, timerDelay);
             this.timerEnabled = timerToggle;
             this.timerTotalTime = timerTime;
             this.english = english;
@@ -538,7 +538,7 @@ namespace PPG
         private void add_eikpoint(decimal location_in_twenteenth_sec)
         {
             Console.WriteLine("Adding eikpoint....");
-            file.WriteLine("Ijkpunt " + location_in_twenteenth_sec.ToString());
+            file.WriteLine("Ijkpunt " + (location_in_twenteenth_sec / 10).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
             DataHandler.ijkpoints.Add(location_in_twenteenth_sec);
         }
 

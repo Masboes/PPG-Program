@@ -16,7 +16,7 @@ namespace PPG
     public partial class CalibrationForm : Form
     {
         private List<List<Decimal>> calibrationConstants = new List<List<decimal>>();
-        private PPG_Data_Handler DataHandler = new PPG_Data_Handler(null, false);
+        private PPG_Data_Handler DataHandler = new PPG_Data_Handler(null, false, 0);
         private int selectedFingerIndex = 0;
 
         private List<Decimal> mesurements = new List<decimal>();

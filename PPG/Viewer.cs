@@ -294,7 +294,7 @@ namespace PPG
                             double xloc = chart1.Series[duim].Points[chart1.Series[duim].Points.Count - 1].XValue;
                             if (line.Length > 8)
                             {
-                                xloc = double.Parse(line.Split(' ')[1])/10.0;
+                                xloc = double.Parse(line.Split(' ')[1], new CultureInfo("en-US"));
                             }
                             ijkPunten.Add(xloc.ToString());
 

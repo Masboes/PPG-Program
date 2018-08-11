@@ -50,10 +50,13 @@ namespace PPG
 
         private int lineCounter = 0;
 
-        public PPG_Data_Handler(Monitor monitor, bool calibration)
+        private decimal timerDelay;
+
+        public PPG_Data_Handler(Monitor monitor, bool calibration, decimal timerDelay)
         {
             instance = monitor;
             this.calibrationEnabled = calibration;
+            this.timerDelay = timerDelay;
 
             string[] lines = System.IO.File.ReadAllLines("Calibration\\Calibration.txt");
             foreach (string line in lines)
@@ -271,7 +274,7 @@ namespace PPG
         
         public void saveLine(StreamWriter file, double waveValue)
         {
-            file.WriteLine(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", (lineCounter / 20.0m).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
+            file.WriteLine(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", (lineCounter * (timerDelay / 1000)).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Thumb1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Index1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Middle1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)

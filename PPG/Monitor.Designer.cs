@@ -1045,7 +1045,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel7.Controls.Add(this.rangeUpDown, 2, 3);
             this.tableLayoutPanel7.Controls.Add(this.rangeToggle, 1, 3);
             this.tableLayoutPanel7.Controls.Add(this.rangeLabel, 0, 3);
@@ -1082,7 +1082,7 @@
             0,
             0});
             this.rangeUpDown.Name = "rangeUpDown";
-            this.rangeUpDown.Size = new System.Drawing.Size(63, 20);
+            this.rangeUpDown.Size = new System.Drawing.Size(62, 20);
             this.rangeUpDown.TabIndex = 26;
             this.rangeUpDown.Value = new decimal(new int[] {
             100,
@@ -1122,11 +1122,11 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(287, -6);
+            this.button7.Location = new System.Drawing.Point(286, -6);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
             this.tableLayoutPanel7.SetRowSpan(this.button7, 2);
-            this.button7.Size = new System.Drawing.Size(48, 50);
+            this.button7.Size = new System.Drawing.Size(49, 50);
             this.button7.TabIndex = 21;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -1146,7 +1146,7 @@
             0,
             -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(62, 20);
             this.numericUpDown1.TabIndex = 6;
             // 
             // label16
@@ -1190,7 +1190,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(63, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(62, 20);
             this.numericUpDown2.TabIndex = 22;
             this.numericUpDown2.Value = new decimal(new int[] {
             50,

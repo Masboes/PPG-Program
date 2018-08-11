@@ -304,7 +304,8 @@ namespace PPG
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if(mesurements.Count > 0) {
+            button2.Focus();
+            if (mesurements.Count > 0) {
                 mesurements.RemoveAt(mesurements.Count - 1);
 
                 measurementCounter--;

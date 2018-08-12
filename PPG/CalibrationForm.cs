@@ -160,10 +160,12 @@ namespace PPG
             {
                 if(mesurements.Count > i)
                 {
-                    chart1.Series[0].Points.AddXY(measureValues[i], mesurements[i]);
+                    //chart1.Series[0].Points.AddXY(measureValues[i], mesurements[i]);
+                    chart1.Series[0].Points.AddXY(mesurements[i], measureValues[i]);
                 } else
                 {
-                    chart1.Series[0].Points.AddXY(measureValues[i], 0);
+                    chart1.Series[0].Points.AddXY(0, measureValues[i]);
+                    //chart1.Series[0].Points.AddXY(measureValues[i], 0);
                 }
             }
         }
@@ -175,11 +177,12 @@ namespace PPG
             double counter = 0;
             double prevVal = 0;
 
-            while(prevVal < 3000 && counter < 1000)
+            while(prevVal < 1500 && counter < 1000)
             {
                 counter += 0.05;
                 prevVal = Math.Round(resolvePolynomial(parameters, counter));
-                chart1.Series[1].Points.AddXY(prevVal, counter);
+                chart1.Series[1].Points.AddXY(counter, prevVal);
+                //chart1.Series[1].Points.AddXY(prevVal, counter);
             }
         }
 

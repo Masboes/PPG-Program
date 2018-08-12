@@ -267,8 +267,8 @@
             // 
             // chart1
             // 
-            chartArea1.AxisX.Title = "Force (g)";
-            chartArea1.AxisY.Title = "PPG  Sensor measurement";
+            chartArea1.AxisX.Title = "PPG Sensor Value";
+            chartArea1.AxisY.Title = "Force (g)";
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Enabled = false;

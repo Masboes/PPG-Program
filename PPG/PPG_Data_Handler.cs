@@ -90,9 +90,9 @@ namespace PPG
                     prepairedLine1 = currentData1.Substring(0, GetNthIndex(currentData1, '#', 2));
                     currentData1 = currentData1.Substring(GetNthIndex(currentData1, '#', 2));
                 }
-                Console.WriteLine(prepairedLine1);
+
                 prepairedLine1 = prepairedLine1.Substring(1);
-                Console.WriteLine(prepairedLine1);
+                //Console.WriteLine(prepairedLine1);
                 var prepairedLine1Splitted = prepairedLine1.Split();
 
                 try
@@ -179,7 +179,7 @@ namespace PPG
 
         public void NewDataPPGReciever(string input)
         {
-            PPGLogger.log("New data recieved from PPG Reciever: " + input);
+            //PPGLogger.log("New data recieved from PPG Reciever: " + input);
             input = Regex.Replace(input, @"\r\n?|\n", "");
             currentData3 += input;
 

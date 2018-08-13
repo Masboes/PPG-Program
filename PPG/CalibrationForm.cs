@@ -120,12 +120,18 @@ namespace PPG
 
         private void displayMeasurements()
         {
-            calibrationChart.Series[0].Points.Clear();
-
-            for(int i = 0; i < measureValues.Length; i++)
+            try
             {
-                decimal yVal = (measurements.Count > i) ? measurements[i] : 0;
-                calibrationChart.Series[0].Points.AddXY(yVal, measureValues[i]);
+                calibrationChart.Series[0].Points.Clear();
+
+                for (int i = 0; i < measureValues.Length; i++)
+                {
+                    decimal yVal = (measurements.Count > i) ? measurements[i] : 0;
+                    calibrationChart.Series[0].Points.AddXY(yVal, measureValues[i]);
+                }
+            } catch
+            {
+                //
             }
         }
 
@@ -338,6 +344,8 @@ namespace PPG
                 measurementCounter--;
                 showWeightValue(measureValues[measurementCounter]);
                 showStatus(measurementCounter + 1, measureValues.Length);
+
+                displayMeasurements();
             }
         }
     }

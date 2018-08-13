@@ -23,7 +23,7 @@ namespace PPG
         private List<Decimal> measurements = new List<decimal>();
 
         private int measurementCounter = 0;
-        private Double[] measureValues = { 50.0, 50.0, 50.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0, 400.0, 500.0, 600.0, 700.0 , 800.0, 900.0, 1000.0, 1300.0, 1500.0 };
+        private Double[] measureValues = { 0.0, 0.0, 0.0, 50.0, 50.0, 50.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0 , 800.0, 900.0, 1000.0, 1300.0, 1500.0 };
 
         private bool english = false;
 
@@ -124,13 +124,8 @@ namespace PPG
 
             for(int i = 0; i < measureValues.Length; i++)
             {
-                if(measurements.Count > i)
-                {
-                    calibrationChart.Series[0].Points.AddXY(measurements[i], measureValues[i]);
-                } else
-                {
-                    calibrationChart.Series[0].Points.AddXY(0, measureValues[i]);
-                }
+                decimal yVal = (measurements.Count > i) ? measurements[i] : 0;
+                calibrationChart.Series[0].Points.AddXY(yVal, measureValues[i]);
             }
         }
 
@@ -151,25 +146,20 @@ namespace PPG
 
         private double resolvePolynomial(double[] parameters, double input)
         {
-            return parameters[0] * Math.Pow(input, 2) + parameters[1] * input;
+            return parameters[2] * Math.Pow(input, 2) + parameters[1] * input;
         }
 
         private void processData()
         {
-            double[] zeroes = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-
             var x = measurements.Select(item => Convert.ToDouble(item)).ToArray();
             var y = measureValues;
 
-            x = x.Concat(zeroes).ToArray();
-            y = y.Concat(zeroes).ToArray();
-
             var constants = Fit.Polynomial(x, y, 2);
 
-            foreach(int constant in constants) {
-                Console.Write(constant + " ");
-            }
-            Console.WriteLine();
+            //foreach(int constant in constants) {
+            //    Console.Write(constant + " ");
+            //}
+            //Console.WriteLine();
 
             displayPolynomial(constants);
 

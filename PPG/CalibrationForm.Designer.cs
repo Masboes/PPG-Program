@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalibrationForm));
             this.leftGloveBtn = new System.Windows.Forms.RadioButton();
             this.rightGloveBtn = new System.Windows.Forms.RadioButton();
@@ -229,7 +229,6 @@
             // 
             // dataRefreshTimer
             // 
-            this.dataRefreshTimer.Interval = 500;
             this.dataRefreshTimer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // progressLabel
@@ -267,22 +266,22 @@
             // 
             // calibrationChart
             // 
-            chartArea2.AxisX.Title = "PPG Sensor Value";
-            chartArea2.AxisY.Title = "Force (g)";
-            chartArea2.Name = "ChartArea1";
-            this.calibrationChart.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.Title = "PPG Sensor Value";
+            chartArea1.AxisY.Title = "Force (g)";
+            chartArea1.Name = "ChartArea1";
+            this.calibrationChart.ChartAreas.Add(chartArea1);
             this.calibrationChart.Enabled = false;
             this.calibrationChart.Location = new System.Drawing.Point(623, 9);
             this.calibrationChart.Name = "calibrationChart";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series3.Name = "Series1";
-            series3.Points.Add(dataPoint2);
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Name = "Series2";
-            this.calibrationChart.Series.Add(series3);
-            this.calibrationChart.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Name = "Series1";
+            series1.Points.Add(dataPoint1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Name = "Series2";
+            this.calibrationChart.Series.Add(series1);
+            this.calibrationChart.Series.Add(series2);
             this.calibrationChart.Size = new System.Drawing.Size(714, 343);
             this.calibrationChart.TabIndex = 13;
             this.calibrationChart.Text = "Calibration";
@@ -305,6 +304,10 @@
             this.Controls.Add(this.fingerGroupBox);
             this.Controls.Add(this.gloveGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1360, 403);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1360, 403);
             this.Name = "CalibrationForm";
             this.Text = "PPG Calibration Tool";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CalibrationForm_KeyPress);

@@ -34,190 +34,190 @@
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalibrationForm));
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.leftGloveBtn = new System.Windows.Forms.RadioButton();
+            this.rightGloveBtn = new System.Windows.Forms.RadioButton();
+            this.gloveGroupBox = new System.Windows.Forms.GroupBox();
+            this.fingerGroupBox = new System.Windows.Forms.GroupBox();
+            this.finger4Btn = new System.Windows.Forms.RadioButton();
+            this.finger3Btn = new System.Windows.Forms.RadioButton();
+            this.finger1Btn = new System.Windows.Forms.RadioButton();
+            this.finger2Btn = new System.Windows.Forms.RadioButton();
+            this.startStopBtn = new System.Windows.Forms.Button();
+            this.currentValLabel = new System.Windows.Forms.Label();
+            this.descLabel3 = new System.Windows.Forms.Label();
+            this.descLabel2 = new System.Windows.Forms.Label();
+            this.descLabel1 = new System.Windows.Forms.Label();
+            this.measurementBtn = new System.Windows.Forms.Button();
             this.PPG1 = new System.IO.Ports.SerialPort(this.components);
             this.PPG2 = new System.IO.Ports.SerialPort(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.dataRefreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.progressLabel = new System.Windows.Forms.Label();
+            this.resetBtn = new System.Windows.Forms.Button();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.calibrationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.gloveGroupBox.SuspendLayout();
+            this.fingerGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calibrationChart)).BeginInit();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // leftGloveBtn
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(64, 24);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Links";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.leftGloveBtn.AutoSize = true;
+            this.leftGloveBtn.Checked = true;
+            this.leftGloveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftGloveBtn.Location = new System.Drawing.Point(6, 19);
+            this.leftGloveBtn.Name = "leftGloveBtn";
+            this.leftGloveBtn.Size = new System.Drawing.Size(64, 24);
+            this.leftGloveBtn.TabIndex = 0;
+            this.leftGloveBtn.TabStop = true;
+            this.leftGloveBtn.Text = "Links";
+            this.leftGloveBtn.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rightGloveBtn
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(6, 49);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(78, 24);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Rechts";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rightGloveBtn.AutoSize = true;
+            this.rightGloveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightGloveBtn.Location = new System.Drawing.Point(6, 49);
+            this.rightGloveBtn.Name = "rightGloveBtn";
+            this.rightGloveBtn.Size = new System.Drawing.Size(78, 24);
+            this.rightGloveBtn.TabIndex = 1;
+            this.rightGloveBtn.Text = "Rechts";
+            this.rightGloveBtn.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // gloveGroupBox
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(122, 73);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Handschoen";
+            this.gloveGroupBox.Controls.Add(this.leftGloveBtn);
+            this.gloveGroupBox.Controls.Add(this.rightGloveBtn);
+            this.gloveGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gloveGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.gloveGroupBox.Name = "gloveGroupBox";
+            this.gloveGroupBox.Size = new System.Drawing.Size(122, 73);
+            this.gloveGroupBox.TabIndex = 2;
+            this.gloveGroupBox.TabStop = false;
+            this.gloveGroupBox.Text = "Handschoen";
             // 
-            // groupBox2
+            // fingerGroupBox
             // 
-            this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 91);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(122, 141);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Vinger";
+            this.fingerGroupBox.Controls.Add(this.finger4Btn);
+            this.fingerGroupBox.Controls.Add(this.finger3Btn);
+            this.fingerGroupBox.Controls.Add(this.finger1Btn);
+            this.fingerGroupBox.Controls.Add(this.finger2Btn);
+            this.fingerGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fingerGroupBox.Location = new System.Drawing.Point(12, 91);
+            this.fingerGroupBox.Name = "fingerGroupBox";
+            this.fingerGroupBox.Size = new System.Drawing.Size(122, 141);
+            this.fingerGroupBox.TabIndex = 3;
+            this.fingerGroupBox.TabStop = false;
+            this.fingerGroupBox.Text = "Vinger";
             // 
-            // radioButton6
+            // finger4Btn
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton6.Location = new System.Drawing.Point(6, 109);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(102, 24);
-            this.radioButton6.TabIndex = 3;
-            this.radioButton6.Text = "Ringvinger";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.finger4Btn.AutoSize = true;
+            this.finger4Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finger4Btn.Location = new System.Drawing.Point(6, 109);
+            this.finger4Btn.Name = "finger4Btn";
+            this.finger4Btn.Size = new System.Drawing.Size(102, 24);
+            this.finger4Btn.TabIndex = 3;
+            this.finger4Btn.Text = "Ringvinger";
+            this.finger4Btn.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // finger3Btn
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.Location = new System.Drawing.Point(6, 79);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(115, 24);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.Text = "Middelvinger";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.finger3Btn.AutoSize = true;
+            this.finger3Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finger3Btn.Location = new System.Drawing.Point(6, 79);
+            this.finger3Btn.Name = "finger3Btn";
+            this.finger3Btn.Size = new System.Drawing.Size(115, 24);
+            this.finger3Btn.TabIndex = 2;
+            this.finger3Btn.Text = "Middelvinger";
+            this.finger3Btn.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // finger1Btn
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(6, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(64, 24);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Duim";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.finger1Btn.AutoSize = true;
+            this.finger1Btn.Checked = true;
+            this.finger1Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finger1Btn.Location = new System.Drawing.Point(6, 19);
+            this.finger1Btn.Name = "finger1Btn";
+            this.finger1Btn.Size = new System.Drawing.Size(64, 24);
+            this.finger1Btn.TabIndex = 0;
+            this.finger1Btn.TabStop = true;
+            this.finger1Btn.Text = "Duim";
+            this.finger1Btn.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // finger2Btn
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(6, 49);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(98, 24);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.Text = "Wijsvinger";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.finger2Btn.AutoSize = true;
+            this.finger2Btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finger2Btn.Location = new System.Drawing.Point(6, 49);
+            this.finger2Btn.Name = "finger2Btn";
+            this.finger2Btn.Size = new System.Drawing.Size(98, 24);
+            this.finger2Btn.TabIndex = 1;
+            this.finger2Btn.Text = "Wijsvinger";
+            this.finger2Btn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // startStopBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 56);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Start kalibratie";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.startStopBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startStopBtn.Location = new System.Drawing.Point(12, 238);
+            this.startStopBtn.Name = "startStopBtn";
+            this.startStopBtn.Size = new System.Drawing.Size(122, 56);
+            this.startStopBtn.TabIndex = 4;
+            this.startStopBtn.Text = "Start kalibratie";
+            this.startStopBtn.UseVisualStyleBackColor = true;
+            this.startStopBtn.Click += new System.EventHandler(this.startStopBtn_click);
             // 
-            // label1
+            // currentValLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(242, 156);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 29);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Huidige waarde: 0,00";
+            this.currentValLabel.AutoSize = true;
+            this.currentValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentValLabel.Location = new System.Drawing.Point(242, 156);
+            this.currentValLabel.Name = "currentValLabel";
+            this.currentValLabel.Size = new System.Drawing.Size(240, 29);
+            this.currentValLabel.TabIndex = 5;
+            this.currentValLabel.Text = "Huidige waarde: 0,00";
             // 
-            // label2
+            // descLabel3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(140, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 24);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "en druk vervolgends op \'maak meting\'";
+            this.descLabel3.AutoSize = true;
+            this.descLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descLabel3.Location = new System.Drawing.Point(140, 91);
+            this.descLabel3.Name = "descLabel3";
+            this.descLabel3.Size = new System.Drawing.Size(329, 24);
+            this.descLabel3.TabIndex = 6;
+            this.descLabel3.Text = "en druk vervolgends op \'maak meting\'";
             // 
-            // label3
+            // descLabel2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(140, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(477, 24);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "totdat de onderstaande waarde niet veel meer verandert";
+            this.descLabel2.AutoSize = true;
+            this.descLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descLabel2.Location = new System.Drawing.Point(140, 61);
+            this.descLabel2.Name = "descLabel2";
+            this.descLabel2.Size = new System.Drawing.Size(477, 24);
+            this.descLabel2.TabIndex = 7;
+            this.descLabel2.Text = "totdat de onderstaande waarde niet veel meer verandert";
             // 
-            // label4
+            // descLabel1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(140, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(401, 24);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Plaats 0 gram druk op de geselecteerde vinger";
+            this.descLabel1.AutoSize = true;
+            this.descLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descLabel1.Location = new System.Drawing.Point(140, 30);
+            this.descLabel1.Name = "descLabel1";
+            this.descLabel1.Size = new System.Drawing.Size(401, 24);
+            this.descLabel1.TabIndex = 8;
+            this.descLabel1.Text = "Plaats 0 gram druk op de geselecteerde vinger";
             // 
-            // button2
+            // measurementBtn
             // 
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(283, 216);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 62);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Maak meting (spatie)";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.measurementBtn.Enabled = false;
+            this.measurementBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.measurementBtn.Location = new System.Drawing.Point(283, 216);
+            this.measurementBtn.Name = "measurementBtn";
+            this.measurementBtn.Size = new System.Drawing.Size(150, 62);
+            this.measurementBtn.TabIndex = 9;
+            this.measurementBtn.Text = "Maak meting (spatie)";
+            this.measurementBtn.UseVisualStyleBackColor = true;
+            this.measurementBtn.Click += new System.EventHandler(this.measurementBtn_click);
             // 
             // PPG1
             // 
@@ -227,53 +227,52 @@
             // 
             this.PPG2.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.PPG2_DataReceived);
             // 
-            // timer1
+            // dataRefreshTimer
             // 
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.dataRefreshTimer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // label5
+            // progressLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(140, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Meting 0/0";
+            this.progressLabel.AutoSize = true;
+            this.progressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressLabel.Location = new System.Drawing.Point(140, 9);
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(79, 16);
+            this.progressLabel.TabIndex = 10;
+            this.progressLabel.Text = "Meting 0/0";
             // 
-            // button3
+            // resetBtn
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(12, 300);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 59);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Reset kalibratie";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.resetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetBtn.Location = new System.Drawing.Point(12, 300);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(122, 59);
+            this.resetBtn.TabIndex = 11;
+            this.resetBtn.Text = "Reset kalibratie";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_click);
             // 
-            // button4
+            // backBtn
             // 
-            this.button4.Enabled = false;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(283, 300);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 47);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Terug";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.backBtn.Enabled = false;
+            this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backBtn.Location = new System.Drawing.Point(283, 300);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(150, 47);
+            this.backBtn.TabIndex = 12;
+            this.backBtn.Text = "Terug";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_click);
             // 
-            // chart1
+            // calibrationChart
             // 
-            chartArea1.AxisX.Title = "Force (g)";
-            chartArea1.AxisY.Title = "PPG  Sensor measurement";
+            chartArea1.AxisX.Title = "PPG Sensor Value";
+            chartArea1.AxisY.Title = "Force (g)";
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Enabled = false;
-            this.chart1.Location = new System.Drawing.Point(623, 9);
-            this.chart1.Name = "chart1";
+            this.calibrationChart.ChartAreas.Add(chartArea1);
+            this.calibrationChart.Enabled = false;
+            this.calibrationChart.Location = new System.Drawing.Point(623, 9);
+            this.calibrationChart.Name = "calibrationChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series1.Name = "Series1";
@@ -281,38 +280,42 @@
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Name = "Series2";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(714, 343);
-            this.chart1.TabIndex = 13;
-            this.chart1.Text = "Calibration";
+            this.calibrationChart.Series.Add(series1);
+            this.calibrationChart.Series.Add(series2);
+            this.calibrationChart.Size = new System.Drawing.Size(714, 343);
+            this.calibrationChart.TabIndex = 13;
+            this.calibrationChart.Text = "Calibration";
             // 
             // CalibrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 364);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.calibrationChart);
+            this.Controls.Add(this.backBtn);
+            this.Controls.Add(this.resetBtn);
+            this.Controls.Add(this.progressLabel);
+            this.Controls.Add(this.measurementBtn);
+            this.Controls.Add(this.descLabel1);
+            this.Controls.Add(this.descLabel2);
+            this.Controls.Add(this.descLabel3);
+            this.Controls.Add(this.currentValLabel);
+            this.Controls.Add(this.startStopBtn);
+            this.Controls.Add(this.fingerGroupBox);
+            this.Controls.Add(this.gloveGroupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1360, 403);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1360, 403);
             this.Name = "CalibrationForm";
             this.Text = "PPG Calibration Tool";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CalibrationForm_KeyPress);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.gloveGroupBox.ResumeLayout(false);
+            this.gloveGroupBox.PerformLayout();
+            this.fingerGroupBox.ResumeLayout(false);
+            this.fingerGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calibrationChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,26 +323,26 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RadioButton leftGloveBtn;
+        private System.Windows.Forms.RadioButton rightGloveBtn;
+        private System.Windows.Forms.GroupBox gloveGroupBox;
+        private System.Windows.Forms.GroupBox fingerGroupBox;
+        private System.Windows.Forms.RadioButton finger1Btn;
+        private System.Windows.Forms.RadioButton finger2Btn;
+        private System.Windows.Forms.RadioButton finger4Btn;
+        private System.Windows.Forms.RadioButton finger3Btn;
+        private System.Windows.Forms.Button startStopBtn;
+        private System.Windows.Forms.Label currentValLabel;
+        private System.Windows.Forms.Label descLabel3;
+        private System.Windows.Forms.Label descLabel2;
+        private System.Windows.Forms.Label descLabel1;
+        private System.Windows.Forms.Button measurementBtn;
         private System.IO.Ports.SerialPort PPG1;
         private System.IO.Ports.SerialPort PPG2;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Timer dataRefreshTimer;
+        private System.Windows.Forms.Label progressLabel;
+        private System.Windows.Forms.Button resetBtn;
+        private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.DataVisualization.Charting.Chart calibrationChart;
     }
 }

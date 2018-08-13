@@ -15,52 +15,32 @@ namespace PPG
 {
     public partial class CalibrationForm : Form
     {
+        private Decimal[] defaultCalibration = { 0.77m, 55.0m, 5.0m };
         private List<List<Decimal>> calibrationConstants = new List<List<decimal>>();
         private PPG_Data_Handler DataHandler = new PPG_Data_Handler(null, false, 0);
         private int selectedFingerIndex = 0;
 
-        private List<Decimal> mesurements = new List<decimal>();
+        private List<Decimal> measurements = new List<decimal>();
 
         private int measurementCounter = 0;
-        private Double[] measureValues = { 50.0, 50.0, 50.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0, 400.0, 500.0, 600.0, 700.0 , 800.0, 900.0, 1000.0, 1300.0, 1500.0 };
+        private Double[] measureValues = { 0.0, 0.0, 0.0, 50.0, 50.0, 50.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0 , 800.0, 900.0, 1000.0, 1300.0, 1500.0 };
 
-        private bool englishMode = false;
+        private bool english = false;
 
         public CalibrationForm(string port1, string port2, bool english)
         {
             InitializeComponent();
             DataHandler.monitorEnabled = false;
-            getCalibrationData();
 
             PPG1.PortName = port1;
             PPG2.PortName = port2;
 
-            initialize_com_ports();
+            this.english = english;
 
-            englishMode = english;
-            if (english)
-            {
-                button2.Text = "Make measurement (space)";
-                button4.Text = "Previous";
-                button1.Text = "Start calibration";
-                button3.Text = "Reset calibration";
-                groupBox1.Text = "Glove";
-                groupBox2.Text = "Finger";
-
-                radioButton1.Text = "Left";
-                radioButton2.Text = "Right";
-                radioButton3.Text = "Thumb";
-                radioButton4.Text = "Index Finger";
-                radioButton5.Text = "Middle Finger";
-                radioButton6.Text = "Ring Finger";
-
-                label1.Text = "Current value: 0,00";
-                label2.Text = "and press on 'Make measurement'";
-                label3.Text = "until the value below does not change significantly";
-                label4.Text = "Place 0 grammes of pressure on the selected finger";
-            }
-
-            setPoints();
+            getCalibrationData();
+            initializeComPorts();
+            setEnglishMode();
+            displayMeasurements();
         }
 
         private void getCalibrationData()
@@ -78,19 +58,12 @@ namespace PPG
             }
         }
 
-        private void initialize_com_ports()
+        private void initializeComPorts()
         {
             try
             {
-                if (PPG1.PortName != "none")
-                {
-                    PPG1.Open();
-                }
-
-                if (PPG2.PortName != "none")
-                {
-                    PPG2.Open();
-                }
+                if (PPG1.PortName != "none") PPG1.Open();
+                if (PPG2.PortName != "none") PPG2.Open();
             } catch {
                 MessageBox.Show("Could not connect with glove, please try again. If the problem stays, please reset the device.", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Dispose();
@@ -113,35 +86,28 @@ namespace PPG
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void measurementBtn_click(object sender, EventArgs e)
         {
             decimal value = getCurrentFingerValue();
-            mesurements.Add(value);
-
+            measurements.Add(value);
             measurementCounter++;
-            if (mesurements.Count == measureValues.Length)
+
+            if (measurements.Count == measureValues.Length) // finished
             {
                 showWeightValue(0.0);
                 showStatus(0, 0);
                 processData();
 
-                timer1.Enabled = false;
-                button2.Enabled = false;
-                button4.Enabled = false;
-                button3.Enabled = true;
-                groupBox1.Enabled = true;
-                groupBox2.Enabled = true;
-                chart1.Enabled = false;
+                dataRefreshTimer.Enabled = false;
+                measurementBtn.Enabled = false;
+                backBtn.Enabled = false;
+                resetBtn.Enabled = true;
+                gloveGroupBox.Enabled = true;
+                fingerGroupBox.Enabled = true;
+                calibrationChart.Enabled = false;
 
-                if (englishMode)
-                {
-                    button1.Text = "Start calibration";
-                }
-                else
-                {
-                    button1.Text = "Start kalibratie";
-                }
-
+                startStopBtn.Text = english ? "Start calibration" : "Start kalibratie";
+                
                 measurementCounter = 0;
             } else
             {
@@ -149,56 +115,57 @@ namespace PPG
                 showStatus(measurementCounter + 1, measureValues.Length);
             }
 
-            setPoints();
+            displayMeasurements();
         }
 
-        private void setPoints()
+        private void displayMeasurements()
         {
-            chart1.Series[0].Points.Clear();
-
-            for(int i = 0; i < measureValues.Length; i++)
+            try
             {
-                if(mesurements.Count > i)
+                calibrationChart.Series[0].Points.Clear();
+
+                for (int i = 0; i < measureValues.Length; i++)
                 {
-                    chart1.Series[0].Points.AddXY(measureValues[i], mesurements[i]);
-                } else
-                {
-                    chart1.Series[0].Points.AddXY(measureValues[i], 0);
+                    decimal yVal = (measurements.Count > i) ? measurements[i] : 0;
+                    calibrationChart.Series[0].Points.AddXY(yVal, measureValues[i]);
                 }
+            } catch
+            {
+                //
             }
         }
 
         private void displayPolynomial(double[] parameters)
         {
-            chart1.Series[1].Points.Clear();
+            calibrationChart.Series[1].Points.Clear();
 
             double counter = 0;
             double prevVal = 0;
 
-            while(prevVal < 3000 && counter < 1000)
+            while(prevVal < 1500 && counter < 1000)
             {
                 counter += 0.05;
                 prevVal = Math.Round(resolvePolynomial(parameters, counter));
-                chart1.Series[1].Points.AddXY(prevVal, counter);
+                calibrationChart.Series[1].Points.AddXY(counter, prevVal);
             }
         }
 
         private double resolvePolynomial(double[] parameters, double input)
         {
-            return parameters[0] * Math.Pow(input, 2) + parameters[1] * input;
+            return parameters[2] * Math.Pow(input, 2) + parameters[1] * input;
         }
 
         private void processData()
         {
-            var x = mesurements.Select(item => Convert.ToDouble(item)).ToArray();
+            var x = measurements.Select(item => Convert.ToDouble(item)).ToArray();
             var y = measureValues;
 
             var constants = Fit.Polynomial(x, y, 2);
 
-            foreach(var i in constants)
-            {
-                Console.WriteLine(i);
-            }
+            //foreach(int constant in constants) {
+            //    Console.Write(constant + " ");
+            //}
+            //Console.WriteLine();
 
             displayPolynomial(constants);
 
@@ -210,110 +177,117 @@ namespace PPG
 
                 saveCalibrationData();
 
-                string message = "Kalibratie succesvol!";
-                if (englishMode)
-                {
-                    message = "Calibration succesful!";
-                }
+                string message = english ? "Calibration succesful!" : "Kalibratie succesvol!";
                 MessageBox.Show(message, "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             catch
             {
                 MessageBox.Show("Kalibratie is niet gelukt :(\n Misschien is er iets mis gegaan met de verbinding, u kunt proberen dit te resetten.", "Mislukt", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            mesurements.Clear();
         }
 
         private void showStatus(int x, int outOf)
         {
-            string prefix = "Meting ";
-            if (englishMode)
-            {
-                prefix = "Measurement ";
-            }
-            label5.Text = prefix + x + "/" + outOf;
+            string prefix = english ?  "Measurement " : "Meting ";
+            progressLabel.Text = prefix + x + "/" + outOf;
         }
 
         private void showWeightValue(double value)
         {
-            string prefix = "Plaats ";
-            if (englishMode)
-            {
-                prefix = "Place ";
-            }
+            string prefix = english ? "Place " : "Plaats ";
+            string postfix = english ? " grammes of pressure on the selected finger" : " gram druk op de geselecteerde vinger";
 
-            string postfix = " gram druk op de geselecteerde vinger";
-            if (englishMode)
-            {
-                postfix = " grammes of pressure on the selected finger";
-            }
-
-
-            label4.Text = prefix + Math.Round(value, 0) + postfix;
+            descLabel1.Text = prefix + Math.Round(value, 0) + postfix;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        { 
-            if(button1.Text == "Start calibration" || button1.Text == "Start kalibratie")
+        private decimal getCurrentFingerValue()
+        {
+            List<decimal> fingerData = new List<decimal>();
+            fingerData.Add(DataHandler.Thumb1Value);
+            fingerData.Add(DataHandler.Index1Value);
+            fingerData.Add(DataHandler.Middle1Value);
+            fingerData.Add(DataHandler.Ring1Value);
+
+            fingerData.Add(DataHandler.Thumb2Value);
+            fingerData.Add(DataHandler.Index2Value);
+            fingerData.Add(DataHandler.Middle2Value);
+            fingerData.Add(DataHandler.Ring2Value);
+
+            return fingerData[selectedFingerIndex];
+        }
+
+        private void setEnglishMode()
+        {
+            if (english)
             {
-                mesurements = new List<decimal>();
-                selectedFingerIndex = 0;
-                if (radioButton1.Checked) selectedFingerIndex += 4;
+                measurementBtn.Text = "Make measurement (space)";
+                backBtn.Text = "Previous";
+                startStopBtn.Text = "Start calibration";
+                resetBtn.Text = "Reset calibration";
+                gloveGroupBox.Text = "Glove";
+                fingerGroupBox.Text = "Finger";
 
-                if (radioButton3.Checked) selectedFingerIndex += 0;
-                if (radioButton4.Checked) selectedFingerIndex += 1;
-                if (radioButton5.Checked) selectedFingerIndex += 2;
-                if (radioButton6.Checked) selectedFingerIndex += 3;
+                leftGloveBtn.Text = "Left";
+                rightGloveBtn.Text = "Right";
+                finger1Btn.Text = "Thumb";
+                finger2Btn.Text = "Index Finger";
+                finger3Btn.Text = "Middle Finger";
+                finger4Btn.Text = "Ring Finger";
 
-                timer1.Enabled = true;
-                button3.Enabled = false;
-                button2.Enabled = true;
-                button4.Enabled = true;
-                showWeightValue(measureValues[measurementCounter]);
-                showStatus(measurementCounter + 1, measureValues.Length);
+                currentValLabel.Text = "Current value: 0,00";
+                descLabel3.Text = "and press on 'Make measurement'";
+                descLabel2.Text = "until the value below does not change significantly";
+                descLabel1.Text = "Place 0 grammes of pressure on the selected finger";
+            }
+        }
 
-                groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
+        private int getSelectedFingerIndex()
+        {
+            int index = 0;
+            if (leftGloveBtn.Checked) index += 4;
+            if (finger1Btn.Checked) index += 0;
+            if (finger2Btn.Checked) index += 1;
+            if (finger3Btn.Checked) index += 2;
+            if (finger4Btn.Checked) index += 3;
 
-                chart1.Enabled = true;
+            return index;
+        }
 
-                button2.Focus();
-
-                if(englishMode)
-                {
-                    button1.Text = "Stop calibration";
-                } else
-                {
-                    button1.Text = "Stop kalibratie";
-                }
-            } else
+        private void startStopBtn_click(object sender, EventArgs e)
+        {
+            if (startStopBtn.Text == "Start calibration" || startStopBtn.Text == "Start kalibratie")
             {
-                mesurements = new List<decimal>();
-
-                timer1.Enabled = false;
-                button3.Enabled = true;
-                button2.Enabled = false;
-                button4.Enabled = false;
-
-                groupBox1.Enabled = true;
-                groupBox2.Enabled = true;
-
-                chart1.Enabled = false;
-
+                measurements = new List<decimal>();
+                selectedFingerIndex = getSelectedFingerIndex();
                 measurementCounter = 0;
+                displayMeasurements();
 
-                setPoints();
+                showWeightValue(measureValues[measurementCounter]);
+                showStatus(measurementCounter + 1, measureValues.Length); // counter starts at 0
 
-                if (englishMode)
-                {
-                    button1.Text = "Start calibration";
-                }
-                else
-                {
-                    button1.Text = "Start kalibratie";
-                }
+                dataRefreshTimer.Enabled = true;
+                resetBtn.Enabled = false;
+                measurementBtn.Enabled = true;
+                backBtn.Enabled = true;
+                gloveGroupBox.Enabled = false;
+                fingerGroupBox.Enabled = false;
+                calibrationChart.Enabled = true;
+
+                measurementBtn.Focus();
+
+                startStopBtn.Text = english ? "Stop calibration" : "Stop kalibratie";
+            }
+            else
+            {
+                dataRefreshTimer.Enabled = false;
+                resetBtn.Enabled = true;
+                measurementBtn.Enabled = false;
+                backBtn.Enabled = false;
+                gloveGroupBox.Enabled = true;
+                fingerGroupBox.Enabled = true;
+                calibrationChart.Enabled = false;
+
+                startStopBtn.Text = english ? "Start calibration" : "Start kalibratie";
             }
         }
 
@@ -333,77 +307,45 @@ namespace PPG
             DataHandler.NewDataPPGReciever(data);
         }
 
-        private decimal getCurrentFingerValue()
+        private void timer_Tick(object sender, EventArgs e)
         {
-            List<decimal> fingerData = new List<decimal>();
-            fingerData.Add(DataHandler.Thumb1Value);
-            fingerData.Add(DataHandler.Index1Value);
-            fingerData.Add(DataHandler.Middle1Value);
-            fingerData.Add(DataHandler.Ring1Value);
-
-            fingerData.Add(DataHandler.Thumb2Value);
-            fingerData.Add(DataHandler.Index2Value);
-            fingerData.Add(DataHandler.Middle2Value);
-            fingerData.Add(DataHandler.Ring2Value);
-
-            return fingerData[selectedFingerIndex];
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            string message = "Huidige waarde: ";
-            if (englishMode)
-            {
-                message = "Current Value: ";
-            }
-
-            label1.Text = message + getCurrentFingerValue();
+            string message = english ? "Current value: " : "Huidige waarde: ";
+            currentValLabel.Text = message + getCurrentFingerValue();
         }
 
         private void CalibrationForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == ' ')
-            {
-                button2_Click(sender, e);
-            }
+            if (e.KeyChar == ' ') measurementBtn_click(sender, e);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void resetBtn_click(object sender, EventArgs e)
         {
-            string message = "Weet u zeker dat u de kalibratie voor deze vinger wilt resetten?";
-            if (englishMode)
-            {
-                message = "Are you sure you want to reset the calibration for this finger?";
-            }
+            string message = english ? "Are you sure you want to reset the calibration for this finger?" : "Weet u zeker dat u de kalibratie voor deze vinger wilt resetten?";
             DialogResult d = MessageBox.Show(message, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (d == DialogResult.Yes)
             {
-                selectedFingerIndex = 0;
-                if (radioButton2.Checked) selectedFingerIndex += 4;
+                selectedFingerIndex = getSelectedFingerIndex();
 
-                if (radioButton3.Checked) selectedFingerIndex += 0;
-                if (radioButton4.Checked) selectedFingerIndex += 1;
-                if (radioButton5.Checked) selectedFingerIndex += 2;
-                if (radioButton6.Checked) selectedFingerIndex += 3;
-
-                calibrationConstants[selectedFingerIndex][0] = 0.77m;
-                calibrationConstants[selectedFingerIndex][1] = 55.0m;
-                calibrationConstants[selectedFingerIndex][2] = 5.0m;
+                calibrationConstants[selectedFingerIndex][0] = defaultCalibration[0];
+                calibrationConstants[selectedFingerIndex][1] = defaultCalibration[1];
+                calibrationConstants[selectedFingerIndex][2] = defaultCalibration[2];
 
                 saveCalibrationData();
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void backBtn_click(object sender, EventArgs e)
         {
-            button2.Focus();
-            if (mesurements.Count > 0) {
-                mesurements.RemoveAt(mesurements.Count - 1);
+            measurementBtn.Focus();
+            if (measurements.Count > 0) {
+                measurements.RemoveAt(measurements.Count - 1);
 
                 measurementCounter--;
                 showWeightValue(measureValues[measurementCounter]);
                 showStatus(measurementCounter + 1, measureValues.Length);
+
+                displayMeasurements();
             }
         }
     }

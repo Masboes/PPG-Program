@@ -55,6 +55,7 @@
             this.resetBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
             this.calibrationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.exportDataBtn = new System.Windows.Forms.Button();
             this.gloveGroupBox.SuspendLayout();
             this.fingerGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calibrationChart)).BeginInit();
@@ -286,11 +287,23 @@
             this.calibrationChart.TabIndex = 13;
             this.calibrationChart.Text = "Calibration";
             // 
+            // exportDataBtn
+            // 
+            this.exportDataBtn.Enabled = false;
+            this.exportDataBtn.Location = new System.Drawing.Point(1248, 324);
+            this.exportDataBtn.Name = "exportDataBtn";
+            this.exportDataBtn.Size = new System.Drawing.Size(75, 23);
+            this.exportDataBtn.TabIndex = 14;
+            this.exportDataBtn.Text = "Export data";
+            this.exportDataBtn.UseVisualStyleBackColor = true;
+            this.exportDataBtn.Click += new System.EventHandler(this.exportDataBtn_Click);
+            // 
             // CalibrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 364);
+            this.Controls.Add(this.exportDataBtn);
             this.Controls.Add(this.calibrationChart);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.resetBtn);
@@ -344,5 +357,6 @@
         private System.Windows.Forms.Button resetBtn;
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.DataVisualization.Charting.Chart calibrationChart;
+        private System.Windows.Forms.Button exportDataBtn;
     }
 }

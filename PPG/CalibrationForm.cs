@@ -200,6 +200,8 @@ namespace PPG
             {
                 MessageBox.Show("Kalibratie is niet gelukt :(\n Misschien is er iets mis gegaan met de verbinding, u kunt proberen dit te resetten.", "Mislukt", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            exportDataBtn.Enabled = true;
         }
 
         private void showStatus(int x, int outOf)
@@ -271,6 +273,7 @@ namespace PPG
 
         private void startStopBtn_click(object sender, EventArgs e)
         {
+            exportDataBtn.Enabled = false;
             if (startStopBtn.Text == "Start calibration" || startStopBtn.Text == "Start kalibratie")
             {
                 measurements = new List<decimal>();
@@ -362,6 +365,27 @@ namespace PPG
                 showStatus(measurementCounter + 1, measureValues.Length);
 
                 displayMeasurements();
+            }
+        }
+
+        private void exportDataBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string dateString = DateTime.Now.ToString().Replace('/', '-').Replace(':', '꞉');
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter("Calibration\\" + dateString + ".csv"))
+                {
+                    file.WriteLine("sep=,\nForce(g),Sensor");
+                    for (int i = 0; i < measurements.Count; i++)
+                    {
+                        file.WriteLine(measureValues[i].ToString(new CultureInfo("en-US")) + "," + measurements[i].ToString(new CultureInfo("en-US")));
+                    }
+                }
+
+                MessageBox.Show("File exported to " + dateString + ".csv in the calibration directory.");
+            } catch
+            {
+                MessageBox.Show("Error, could not export data");
             }
         }
     }

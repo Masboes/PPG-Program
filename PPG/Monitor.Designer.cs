@@ -1045,7 +1045,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel7.Controls.Add(this.rangeUpDown, 2, 3);
             this.tableLayoutPanel7.Controls.Add(this.rangeToggle, 1, 3);
             this.tableLayoutPanel7.Controls.Add(this.rangeLabel, 0, 3);
@@ -1075,7 +1075,7 @@
             0,
             0,
             0});
-            this.rangeUpDown.Location = new System.Drawing.Point(220, 47);
+            this.rangeUpDown.Location = new System.Drawing.Point(219, 47);
             this.rangeUpDown.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -1095,7 +1095,7 @@
             // 
             this.rangeToggle.AutoSize = true;
             this.rangeToggle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rangeToggle.Location = new System.Drawing.Point(139, 47);
+            this.rangeToggle.Location = new System.Drawing.Point(138, 47);
             this.rangeToggle.Name = "rangeToggle";
             this.rangeToggle.Size = new System.Drawing.Size(75, 19);
             this.rangeToggle.TabIndex = 25;
@@ -1108,7 +1108,7 @@
             this.rangeLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rangeLabel.AutoSize = true;
             this.rangeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rangeLabel.Location = new System.Drawing.Point(75, 44);
+            this.rangeLabel.Location = new System.Drawing.Point(74, 44);
             this.rangeLabel.Name = "rangeLabel";
             this.rangeLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.tableLayoutPanel7.SetRowSpan(this.rangeLabel, 2);
@@ -1122,11 +1122,11 @@
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(285, -6);
+            this.button7.Location = new System.Drawing.Point(284, -6);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
             this.tableLayoutPanel7.SetRowSpan(this.button7, 2);
-            this.button7.Size = new System.Drawing.Size(50, 50);
+            this.button7.Size = new System.Drawing.Size(51, 50);
             this.button7.TabIndex = 21;
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -1134,7 +1134,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(220, -3);
+            this.numericUpDown1.Location = new System.Drawing.Point(219, -3);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -1154,7 +1154,7 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(32, 7);
+            this.label16.Location = new System.Drawing.Point(31, 7);
             this.label16.Name = "label16";
             this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.tableLayoutPanel7.SetRowSpan(this.label16, 2);
@@ -1166,7 +1166,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(139, -3);
+            this.checkBox1.Location = new System.Drawing.Point(138, -3);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 19);
             this.checkBox1.TabIndex = 7;
@@ -1183,7 +1183,7 @@
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(220, 22);
+            this.numericUpDown2.Location = new System.Drawing.Point(219, 22);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             400,
             0,
@@ -1202,7 +1202,7 @@
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(139, 25);
+            this.label17.Location = new System.Drawing.Point(138, 25);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(74, 13);
             this.label17.TabIndex = 23;

@@ -46,7 +46,7 @@ namespace PPG
 
         public bool sineWaveEnabled = false;
         public decimal sineWaveAmplitude = 50.0m;
-        public decimal sineWavePeriod = 20.0m;
+        public decimal sineWavePeriod = 1.0m;
         public int sineWaveBalance = 100;
         private decimal iterationCounter = 0;
         public double sineWaveValue = 0.0;

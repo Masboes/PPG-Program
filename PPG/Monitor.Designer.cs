@@ -1213,8 +1213,8 @@
             this.tableLayoutPanel10.ColumnCount = 4;
             this.tableLayoutPanel5.SetColumnSpan(this.tableLayoutPanel10, 3);
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel10.Controls.Add(this.metroToggle1, 1, 2);
             this.tableLayoutPanel10.Controls.Add(this.label8, 1, 0);
@@ -1237,10 +1237,10 @@
             // metroToggle1
             // 
             this.metroToggle1.AutoSize = true;
-            this.metroToggle1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroToggle1.Location = new System.Drawing.Point(-91, 41);
+            this.metroToggle1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroToggle1.Location = new System.Drawing.Point(42, 41);
             this.metroToggle1.Name = "metroToggle1";
-            this.metroToggle1.Size = new System.Drawing.Size(144, 15);
+            this.metroToggle1.Size = new System.Drawing.Size(80, 15);
             this.metroToggle1.TabIndex = 28;
             this.metroToggle1.Text = "Off";
             this.metroToggle1.UseSelectable = true;
@@ -1251,7 +1251,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(-30, 7);
+            this.label8.Location = new System.Drawing.Point(39, 7);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.tableLayoutPanel10.SetRowSpan(this.label8, 2);
@@ -1299,7 +1299,7 @@
             this.numericUpDown5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown5.Location = new System.Drawing.Point(209, 22);
             this.numericUpDown5.Maximum = new decimal(new int[] {
-            10,
+            3,
             0,
             0,
             0});
@@ -1312,7 +1312,7 @@
             this.numericUpDown5.Size = new System.Drawing.Size(194, 20);
             this.numericUpDown5.TabIndex = 9;
             this.numericUpDown5.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});

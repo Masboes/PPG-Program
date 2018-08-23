@@ -181,7 +181,7 @@ namespace PPG
 
             label8.Text = "Sine wave:";
             label6.Text = "Middle:";
-            label7.Text = "Period:";
+            label7.Text = "Frequency:";
 
             PauzeKnop.Text = "Pause";
             ResetGrafiekKnop.Text = "Clear chart";
@@ -677,7 +677,7 @@ namespace PPG
 
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
-            chartManager.sineWavePeriod = (int)numericUpDown5.Value;
+            chartManager.sineWavePeriod = (decimal)(1.0m / numericUpDown5.Value);
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)

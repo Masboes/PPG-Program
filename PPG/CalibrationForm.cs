@@ -43,6 +43,8 @@ namespace PPG
 
         private bool english = false;
 
+        private decimal dataAge = 0.0m;
+
         public CalibrationForm(string port1, string port2, bool english)
         {
             InitializeComponent();
@@ -312,6 +314,7 @@ namespace PPG
 
         private void PPG1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            dataAge = 0;
             SerialPort sp = (SerialPort)sender;
             string data = sp.ReadExisting();
             data = data.Replace("#", "&PPG1");
@@ -320,6 +323,7 @@ namespace PPG
 
         private void PPG2_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            dataAge = 0;
             SerialPort sp = (SerialPort)sender;
             string data = sp.ReadExisting();
             data = data.Replace("#", "&PPG2");
@@ -330,6 +334,14 @@ namespace PPG
         {
             string message = english ? "Current value: " : "Huidige waarde: ";
             currentValLabel.Text = message + getCurrentFingerValue();
+
+            dataAge += dataRefreshTimer.Interval / 1000.0m;
+
+            if(dataAge > 5.0m)
+            {
+                dataAge = 0;
+                MessageBox.Show("WARNING: Possible connection loss\nLast data is over 5 seconds old.\nConnection might be restored automatically.");
+            }
         }
 
         private void CalibrationForm_KeyPress(object sender, KeyPressEventArgs e)

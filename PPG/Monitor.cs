@@ -497,7 +497,7 @@ namespace PPG
             catch { }
 
             file = File.AppendText(filePath);
-            file.WriteLine("sep=,\nTime since start(s),Thumb 1,Index 1,Middle 1,Ring 1,Thumb 2,Index 2,Middle 2,Ring 2,Sine Wave");
+            file.WriteLine("sep=,\nTime since start(s),Thumb 1,Index 1,Middle 1,Ring 1,Thumb 2,Index 2,Middle 2,Ring 2,Sine Wave,Computer Time");
             running = true;
             chartTimer.Enabled = true;
             clockTimer.Enabled = true;

@@ -274,7 +274,7 @@ namespace PPG
         
         public void saveLine(StreamWriter file, double waveValue)
         {
-            file.WriteLine(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", (lineCounter * (timerDelay / 1000)).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
+            file.WriteLine(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", (lineCounter * (timerDelay / 1000)).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Thumb1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Index1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Middle1Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
@@ -283,7 +283,8 @@ namespace PPG
                                                                    , Index2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Middle2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
                                                                    , Ring2Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
-                                                                   , waveValue.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)));
+                                                                   , waveValue.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)
+                                                                   , DateTime.Now.ToString("h:mm:ss")));
             lineCounter++;
         }
     }
